@@ -65,22 +65,23 @@ fn get_safety_factor(data: &Vec<Robot>, width: i32, height: i32) -> i32 {
 
 fn look_for_easter_egg(mut data: Vec<Robot>, width: i32, height: i32) -> i32 {
     for i in 1..10404 {
-        let mut seen: [[u8; 101]; 103] = [[46; 101]; 103];
+        let mut seen: Vec<Vec<char>> = vec![vec!['.'; 101]; 103];
 
         for r in data.iter_mut() {
             r.position.0 = (r.position.0 + r.velocity.0 + width) % width;
             r.position.1 = (r.position.1 + r.velocity.1 + height) % height;
             let (x, y): (usize, usize) = (r.position.1.try_into().unwrap(), r.position.0.try_into().unwrap());
-            seen[x][y] = 49;
+            seen[x][y] = '1';
         }
 
-        for row in seen.iter().map(|x| String::from_utf8((*x).to_vec()).unwrap()) {
+        for row in seen.iter().map(|x| (*x).iter().collect::<String>()) {
             if row.contains("11111111111111") {
+                println!("Output at time t = {i}");
                 for row in seen {
                     for c in row {
                         print!("{}", char::from(c));
                     }
-                    println!("{i}");
+                    println!("");
                 }
                 break;
             }
