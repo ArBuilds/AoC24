@@ -5,7 +5,7 @@ mod guard_gallivant; mod bridge_repair;
 mod resonant_collinearity; mod disk_fragmenter;
 mod hoof_it; mod plutonian_pebbles; mod garden_groups;
 mod claw_contraption; mod restroom_redoubt;
-mod warehouse_woes;
+mod warehouse_woes; mod reindeer_maze;
 
 pub fn run(day: i32, mode: String, ignore: i32) {
     let filename = format!("./data/day{day}_{mode}.txt");
@@ -25,6 +25,7 @@ pub fn run(day: i32, mode: String, ignore: i32) {
         13 => claw_contraption::run(filename, ignore),
         14 => restroom_redoubt::run(filename, ignore),
         15 => warehouse_woes::run(filename, ignore),
+        16 => reindeer_maze::run(filename, ignore),
         _ => panic!("No solution implemented for day {day}.")
     };
 }
