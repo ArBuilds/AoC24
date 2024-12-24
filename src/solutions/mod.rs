@@ -9,6 +9,7 @@ mod warehouse_woes; mod reindeer_maze;
 mod chronospatial_computer; mod ram_run;
 mod linen_layout; mod race_condition;
 mod keypad_conundrum; mod monkey_market; mod lan_party;
+mod crossed_wires;
 
 pub fn run(day: i32, mode: String, ignore: i32) {
     let filename = format!("./data/day{day}_{mode}.txt");
@@ -36,6 +37,7 @@ pub fn run(day: i32, mode: String, ignore: i32) {
         21 => keypad_conundrum::run(filename, ignore),
         22 => monkey_market::run(filename, ignore),
         23 => lan_party::run(filename, ignore),
+        24 => crossed_wires::run(filename, ignore),
         _ => panic!("No solution implemented for day {day}.")
     };
 }
